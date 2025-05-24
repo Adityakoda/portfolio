@@ -19,7 +19,7 @@ html, body {
   display: flex;
   align-items: center;
   gap: 5rem;
-  margin-left: 500px;
+  margin-left: 600px;
   list-style: none;
   margin-top: -130px;
 }
@@ -28,6 +28,7 @@ html, body {
   font-size: 0.9rem;
   text-decoration: none;
   color: #f7f4f4;
+  
 }
 
 .nav__menu a:hover {
