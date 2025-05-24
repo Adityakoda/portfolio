@@ -38,7 +38,6 @@ export const Nav = () => {
             <Link to='/'><li><h3>Home</h3></li></Link>
             <Link to='/resume'><li><h3>Resume</h3></li></Link>
             <Link to='/project'><li><h3>Projects</h3></li></Link> 
-            {/* <Link to='/contact'><li><h3>Contact</h3></li></Link> */}
             <Link to='/contact'><li><button>Hire Me</button></li></Link>
           </ul>
         </div>
