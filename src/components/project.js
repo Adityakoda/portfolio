@@ -2,11 +2,20 @@ import React, { useEffect, useState } from 'react';
 import './project.css';
 import illustra from './images/illustra.png';
 import brohood from './images/brohood.png';
-import satyabama from './images/illustra.png';
 
 const projectList = [
   {
     id: 1,
+    title: '3D T-Shirt Designer Store', 
+    description:
+      'Brohood is an interactive e-commerce platform that allows users to design and purchase 3D customizable T-shirts in real-time. Built with React and Three.js, it delivers a modern, immersive shopping experience. The platform supports dynamic design previews, offering users full creative control over their apparel.',
+    stack: 'Html5, CSS3, Three.js',
+    image: brohood,
+    liveLink: 'https://brohood.vercel.app/',
+    codeLink: '#',
+  },
+  {   
+    id: 2,
     title: 'AI Image Generator',
     description:
       'Illustra.ai is an AI-powered image generator that transforms text prompts into high-quality visuals using advanced deep learning models. The tool enables users to create unique images for art, design, or content creation with just a few words. Built with React and integrated with the Clipdrop API, it delivers a seamless and interactive user experience.',
@@ -14,21 +23,12 @@ const projectList = [
     image: illustra,
     liveLink: '#',
     codeLink: '#',
-  },
-  {
-    id: 2,
-    title: '3D T-Shirt Designer Store',
-    description:
-      'Brohood is an interactive e-commerce platform that allows users to design and purchase 3D customizable T-shirts in real-time. Built with React and Three.js, it delivers a modern, immersive shopping experience. The platform supports dynamic design previews, offering users full creative control over their apparel.',
-    stack: 'Html5, CSS3, Three.js',
-    image: brohood,
-    liveLink: '#',
-    codeLink: '#',
-  },
+  }, 
+  
 ];
 
 export const Project = () => {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(0); 
   const total = projectList.length;
 
   const nextProject = () => setCurrent((prev) => (prev + 1) % total);
@@ -57,6 +57,22 @@ export const Project = () => {
     };
     document.body.appendChild(script);
   }, []);
+
+useEffect(() => {
+  const handleKeyDown = (event) => {
+    if (event.key === 'ArrowRight') {
+      nextProject();
+    } else if (event.key === 'ArrowLeft') {
+      prevProject();
+    }
+  };
+
+  window.addEventListener('keydown', handleKeyDown);
+  return () => {
+    window.removeEventListener('keydown', handleKeyDown);
+  };
+}, []);
+
 
   return (
     <div className="project-container">

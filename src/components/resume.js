@@ -34,7 +34,7 @@ export const Resume = () => {
       });
     };
     document.body.appendChild(script);
-  }, []);
+  }, []); 
 
   return (
     <div className='container'>

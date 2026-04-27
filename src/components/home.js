@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'; 
 import './home.css';
 import pic from './images/aditya.jpg';
-import logo from './images/linkedin.png' 
+import logo from './images/linkedin.png'  
 import logo2 from './images/github.png'
 import logo3 from './images/whatsapp.png'
 import logo4 from './images/twitter.png'
@@ -41,7 +41,7 @@ export const Home = () => {
           <div className="header__left">
             <h1>Hello I'm</h1>
             <h2>Aditya Koda</h2>
-            <a href="/resume.pdf" download className="download-btn"><button>Download CV</button></a>
+            <a href="/adi.pdf" download className="download-btn"><button>Download CV</button></a>
             <ul className="social__icons">
   <li>
     <a href="https://www.linkedin.com/in/aditya-vardhan-koda-057b992b7/" target="_blank" rel="noopener noreferrer">
