@@ -1,13 +1,18 @@
-html, body {
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html, body {
   height: 100%;
-  overflow: hidden;
-  font-family:serif;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .finisher-header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -15,50 +20,169 @@ html, body {
   z-index: -1;
 }
 
+/* ── NAV ─────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 0 2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(39, 40, 46, 0.55);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.3s ease;
+}
+
+.nav__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.nav__logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #87ddfe;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav__logo:hover {
+  color: #acaaff;
+  text-shadow: 0 0 20px rgba(172,170,255,0.5);
+}
+
+/* Desktop menu */
 .nav__menu {
   display: flex;
   align-items: center;
-  gap: 5rem;
-  margin-left: 600px;
+  gap: 2.5rem;
   list-style: none;
-  margin-top: -130px;
 }
 
 .nav__menu a {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 400;
   text-decoration: none;
-  color: #f7f4f4;
-  
+  color: rgba(247,244,244,0.8);
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s ease;
+}
+
+.nav__menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: #87ddfe;
+  transition: width 0.3s ease;
 }
 
 .nav__menu a:hover {
-  color: #146fc4;
+  color: #87ddfe;
 }
 
-button {
-  width: 100px;
-  padding: 12px;
-  border: 2px solid #333;
-  background-color: #ffffff;
-  color: #333;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
+.nav__menu a:hover::after {
+  width: 100%;
 }
 
-button:hover {
+.nav__menu h3 {
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+/* Hire Me button */
+.hire-btn {
+  padding: 9px 22px;
+  border: 1.5px solid #87ddfe;
   background: transparent;
-  color: #ffffff;
-  border-color: #ffffff;
-  box-shadow:
-    inset 0 0 3rem rgba(0, 0, 0, 0.5),
-    0 0 1rem rgba(255, 254, 254, 0.5);
+  color: #87ddfe !important;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.5px;
 }
 
-.nav__container h1{
-    color: #146fc4;
-   margin-left: 50px;
-   font-size: 50px;
-   padding: 0;
+.hire-btn:hover {
+  background: #87ddfe;
+  color: #27282e !important;
+  box-shadow: 0 0 20px rgba(135,221,254,0.35);
+  transform: translateY(-2px);
+  
+}
+
+/* ── HAMBURGER ───────────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 200;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #f7f4f4;
+  border-radius: 2px;
+  transition: transform 0.35s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE MENU ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+
+  .nav__menu {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 260px;
+    height: calc(100vh - 70px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2rem 2rem;
+    gap: 1.8rem;
+    background: rgba(27, 28, 34, 0.97);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255,255,255,0.07);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+  }
+
+  .nav__menu.open {
+    transform: translateX(0);
+  }
+
+  .nav__menu a {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 0 1rem; }
+  .nav__logo { font-size: 1.7rem; }
 }
